@@ -67,3 +67,49 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 <br />
 
 [![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+
+# running application via npm on local machine
+To install all packages from package.json: 
+  npm install --legacy-peer-deps
+To start the web server: 
+  npm start
+
+# running application via docker
+To build the docker image for our application: 
+  docker build --no-cache -t  realworld-app .
+To run the docker container:
+  docker run --name realworld-app -d -p 4100:4100 realworld-app:latest
+To find docker desktop ip address: 
+  C:\Windows\System32\drivers\etc\hosts
+To view the application on browser: 
+  http://192.168.1.20:4100/
+
+# running application via docker  compose
+To run the docker-compose.yml: docker-compose up
+
+# To convert docker-compose file to kubernetes 
+To download Kompose:
+  curl -L https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-windows-amd64.exe -o kompose.exe
+To convert docker-compose file to kubernetes resources automatically:
+  Kompose convert
+
+# Minikube
+To start minikube: 
+  minikube start
+
+# Kubernetes
+https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
+
+To switch docker images regisrty to minikube registry: 
+  minikube docker-env
+  @FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env') DO @%i
+
+Now build image again: 
+  docker build --no-cache -t  realworld-app .
+
+To create kubernetes deployment: 
+  kubectl apply -f web-deployment.yaml
+To create kubernetes service: 
+  kubectl apply -f web-service.yaml
+To reach the service: 
+  minikube service realworld-app 
