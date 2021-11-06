@@ -68,13 +68,13 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 [![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
 
-# running application via npm on local machine
+# Running application via npm on local machine
 - To install all packages from package.json: 
   `npm install --legacy-peer-deps`
 - To start the web server: 
   `npm start`
 
-# running application via docker
+# Running application via docker
 - To build the docker image for our application: 
   `docker build --no-cache -t  realworld-app .`
 - To run the docker container:
@@ -84,11 +84,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 - To view the application on browser: 
   `http://192.168.1.20:4100/`
 
-# running application via docker  compose
+# Running application via docker  compose
 - To run the docker-compose.yml: 
   `docker-compose up`
 
-# To convert docker-compose file to kubernetes 
+# Converting docker-compose file to kubernetes 
 - To download Kompose:
   `curl -L https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-windows-amd64.exe -o kompose.exe`
 - To convert docker-compose file to kubernetes resources automatically:
