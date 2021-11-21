@@ -114,3 +114,40 @@ https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28
   `kubectl apply -f web-service.yaml`
 - To reach the service: 
   `minikube service realworld-app` 
+
+# Helm
+- To create Helm Chart
+  `helm create realworld-app`
+
+- Verify YAML files generated
+  `tree realworld-app`
+
+- Update chart.yaml
+  set 
+    appVersion: "latest"
+
+- Update deployment.yaml
+  set 
+    containerPort : 4100
+
+- Update values.yaml
+  set 
+    repository: realworld-app
+  set 
+    type: NodePort
+    port: 4100  
+
+- Verify Conversion of YAMLs
+  `helm template realworld-app`
+
+- To find any syntactical errors  
+  `helm lint realworld-app`
+
+- To Run/Install Helm Chart
+  `helm install realworld-app-installation realworld-app`
+
+- To upgrade Helm Chart
+  `helm upgrade realworld-app-installation realworld-app`
+
+- To uninstall Helm Chart
+  `helm uninstall realworld-app-installation realworld-app`
