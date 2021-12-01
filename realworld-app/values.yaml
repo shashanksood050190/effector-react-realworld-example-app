@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io
+  repository: gcr.io/terraform-gcp-demo-330613/realworld-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
