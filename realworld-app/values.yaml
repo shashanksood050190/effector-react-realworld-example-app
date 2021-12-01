@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: realworld-app
-  pullPolicy: Never
+  repository: gcr.io
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
