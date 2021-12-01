@@ -58,4 +58,15 @@ jobs:
     - name: Install Helm
       run: |
         curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-
+        
+    # Deploy the Docker image to the GKE cluster
+    - name: Deploy
+      run: |
+        gcloud container clusters get-credentials $GKE_CLUSTER \
+          --zone $GKE_ZONE \
+          --project $GKE_PROJECT
+        helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
+          --set realworld-app.image.tag=$GITHUB_SHA \
+          --wait
+        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        kubectl get services -o wide
