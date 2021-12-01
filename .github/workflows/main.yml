@@ -64,9 +64,9 @@ jobs:
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER \
           --zone $GKE_ZONE \
-          --project $GKE_PROJECT
-        helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
-          --set realworld-app.image.tag=$GITHUB_SHA \
+          --project $PROJECT_ID
+        helm upgrade $PROJECT_ID $PROJECT_ID-cluster/ \
+          --set $IMAGE.image.tag=$GITHUB_SHA \
           --wait
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
