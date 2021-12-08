@@ -15,7 +15,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
-  GKE_ZONE: us-east1-b
+  GKE_ZONE: us-central1
   GKE_CLUSTER: gke-ycit021-project-dev
   IMAGE: realworld-app
   REGISTRY_HOSTNAME: us.gcr.io
