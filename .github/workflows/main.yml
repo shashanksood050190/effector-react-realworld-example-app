@@ -65,17 +65,11 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        #gcloud container clusters create $GKE_CLUSTER \
-        # --zone $GKE_ZONE \
-        # --project $PROJECT_ID \
-        # --num-nodes 3
         gcloud container clusters get-credentials $GKE_CLUSTER \
           --zone $GKE_ZONE \
           --project $PROJECT_ID
-        #helm upgrade $DEPLOYMENT_NAME-installation $DEPLOYMENT_NAME \
-        #  --set $IMAGE.image.tag=$GITHUB_SHA \
-        #  --wait
-        helm install $DEPLOYMENT_NAME-installation $DEPLOYMENT_NAME \
-           --set=image.tag=$GITHUB_SHA
+        helm upgrade -install $DEPLOYMENT_NAME-installation $DEPLOYMENT_NAME \
+          --set=image.tag=$GITHUB_SHA \
+          --wait
         kubectl rollout status deployment/$DEPLOYMENT_NAME-installation
         kubectl get services -o wide
